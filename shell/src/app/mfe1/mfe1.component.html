@@ -1,0 +1,36 @@
+<style>
+  .wrapper {
+    display: grid;
+  }
+  .grid-container {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    /*gap: 10px;  Espaço entre os itens da grid */
+  }
+
+  .grid-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f9f9f9;
+  }
+  
+</style>
+
+<div
+  class="grid-container"
+  [style.gridTemplateColumns]="'repeat(' + gridConfig.columns + ', 1fr)'"
+  [style.gridTemplateRows]="'repeat(' + gridConfig.rows + ', 1fr)'"
+>
+  <ng-container *ngFor="let mfe of mfesJson">
+    <div
+      class="grid-item"
+      [style.gridRow]="mfe.position.row + ' / span ' + mfe.size.rowSpan"
+      [style.gridColumn]="mfe.position.column + ' / span ' + mfe.size.colSpan"
+    >
+      <!-- <div #mfeContainer></div> -->
+       <div #mfeContainer></div>
+    </div>
+  </ng-container> 
+</div>
+
