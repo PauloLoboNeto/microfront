@@ -63,11 +63,11 @@ export class MFE1Component implements AfterViewInit {
     ngAfterViewInit() {
         const modulesMFE: any[] = []
         this.mfesJson.forEach((mfeJson, index) => {
-            this.processMFE(mfeJson, this.mfeContainer.toArray()[index]);
+            this.processMFE(mfeJson, this.mfeContainer.toArray()[index], index);
         })
     }
 
-    private processMFE(mfeJson: any, container: ElementRef) {
+    private processMFE(mfeJson: any, container: ElementRef, index: number) {
         loadRemoteModule({
             type: mfeJson.type,
             remoteEntry: mfeJson.remoteEntry,
@@ -76,6 +76,7 @@ export class MFE1Component implements AfterViewInit {
         }).then(res => {
             // container.clear();
             const element = this.renderer.createElement('mfe1-element')
+            element['texto'] = index;
             container.nativeElement.appendChild(element);
             // container.createComponent(res[mfeJson.exposedModule]);
             console.log(res);
