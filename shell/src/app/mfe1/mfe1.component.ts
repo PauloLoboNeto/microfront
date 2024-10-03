@@ -15,7 +15,7 @@ export class MFE1Component implements AfterViewInit {
         exposedModule: './Module',
         remoteName: 'mfe1',
         position: { "row": 1, "column": 1 },
-        size: { "rowSpan": 1, "colSpan": 1 }
+        size: { "rowSpan": 2, "colSpan": 2 }
     },
     {
         name: "mfe1",
@@ -25,7 +25,7 @@ export class MFE1Component implements AfterViewInit {
         exposedModule: './Module',
         remoteName: 'mfe1',
         position: { "row": 1, "column": 2 },
-        size: { "rowSpan": 1, "colSpan": 1 }
+        size: { "rowSpan": 1, "colSpan": 3 }
     },
     {
         name: "mfe1",
@@ -35,7 +35,7 @@ export class MFE1Component implements AfterViewInit {
         exposedModule: './Module',
         remoteName: 'mfe1',
         position: { "row": 2, "column": 1 },
-        size: { "rowSpan": 3, "colSpan": 3 }
+        size: { "rowSpan": 4, "colSpan": 3 }
     },
     {
         name: "mfe1",
@@ -45,11 +45,8 @@ export class MFE1Component implements AfterViewInit {
         exposedModule: './Module',
         remoteName: 'mfe1',
         position: { "row": 1, "column": 3 },
-        size: { "rowSpan": 3, "colSpan": 3 }
-    }
-
-    ]
-
+        size: { "rowSpan": 4, "colSpan": 3 }
+    }]
 
     gridConfig = {
         "rows": 3,
@@ -66,11 +63,11 @@ export class MFE1Component implements AfterViewInit {
 
     ngAfterViewInit() {
         this.mfesJson.forEach((mfeJson, index) => {
-            this.processMFE(mfeJson, this.mfeContainer.toArray()[index], index);
+            this.processMFE(mfeJson, this.mfeContainer.toArray()[index]);
         })
     }
 
-    private processMFE(mfeJson: any, container: ElementRef, index: number) {
+    private processMFE(mfeJson: any, container: ElementRef) {
         loadRemoteModule({
             type: mfeJson.type,
             remoteEntry: mfeJson.remoteEntry,
@@ -78,7 +75,7 @@ export class MFE1Component implements AfterViewInit {
             remoteName: mfeJson.remoteName
         }).then(res => {
             const element = this.renderer.createElement('mfe1-element')
-            element['texto'] = index;
+            element['texto'] = mfeJson.positionMFE;
             container.nativeElement.appendChild(element);
             console.log(res);
             console.log(container);
