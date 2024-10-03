@@ -10,6 +10,7 @@ export class MFE1Component implements AfterViewInit {
     mfesJson = [{
         name: "mfe1",
         type: 'script' as any,
+        positionMFE: 1,
         remoteEntry: 'http://localhost:4201/remoteEntry.js',
         exposedModule: './Module',
         remoteName: 'mfe1',
@@ -19,6 +20,7 @@ export class MFE1Component implements AfterViewInit {
     {
         name: "mfe1",
         type: 'script' as any,
+        positionMFE: 2,
         remoteEntry: 'http://localhost:4201/remoteEntry.js',
         exposedModule: './Module',
         remoteName: 'mfe1',
@@ -28,6 +30,7 @@ export class MFE1Component implements AfterViewInit {
     {
         name: "mfe1",
         type: 'script' as any,
+        positionMFE: 3,
         remoteEntry: 'http://localhost:4201/remoteEntry.js',
         exposedModule: './Module',
         remoteName: 'mfe1',
@@ -37,6 +40,7 @@ export class MFE1Component implements AfterViewInit {
     {
         name: "mfe1",
         type: 'script' as any,
+        positionMFE: 4,
         remoteEntry: 'http://localhost:4201/remoteEntry.js',
         exposedModule: './Module',
         remoteName: 'mfe1',
@@ -61,7 +65,6 @@ export class MFE1Component implements AfterViewInit {
     }
 
     ngAfterViewInit() {
-        const modulesMFE: any[] = []
         this.mfesJson.forEach((mfeJson, index) => {
             this.processMFE(mfeJson, this.mfeContainer.toArray()[index], index);
         })
@@ -74,11 +77,9 @@ export class MFE1Component implements AfterViewInit {
             exposedModule: mfeJson.exposedModule,
             remoteName: mfeJson.remoteName
         }).then(res => {
-            // container.clear();
             const element = this.renderer.createElement('mfe1-element')
             element['texto'] = index;
             container.nativeElement.appendChild(element);
-            // container.createComponent(res[mfeJson.exposedModule]);
             console.log(res);
             console.log(container);
 
