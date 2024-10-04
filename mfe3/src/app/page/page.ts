@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'mfe1-element',
+  selector: 'mfe3-element',
   templateUrl: './page.html'
 })
 export class PageComponent {
-  title = 'mfe1';
-  @Input() texto: string = 'mfe1';
+  title = 'mfe3';
+  @Input() texto: string = 'mfe3';
 }
