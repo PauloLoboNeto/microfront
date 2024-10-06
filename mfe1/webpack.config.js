@@ -4,6 +4,7 @@ const path = require("path");
 const sharedMappings = new mf.SharedMappings();
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 sharedMappings.register(path.join(__dirname, "tsconfig.json"));
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   output: {
@@ -39,14 +40,12 @@ module.exports = {
       })
     }),
     sharedMappings.getPlugin(),
+    // new MiniCssExtractPlugin(),
   ],
-  module: {
-    rules: [{
-      test: /\.css$/,
-      use: [
-        'style-loader',
-        'css-loader'
-      ]
-    }]
-  }
+  // module: {
+  //   rules: [ {
+  //     test: /\.css$/i,
+  //     use: [MiniCssExtractPlugin.loader, "css-loader"],
+  //   }]
+  // }
 };

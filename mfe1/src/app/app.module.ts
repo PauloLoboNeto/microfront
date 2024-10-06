@@ -4,8 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { createCustomElement } from '@angular/elements';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PageComponent } from './page/page';
-import { PageModule } from './page/page.module';
 
 @NgModule({
   declarations: [
@@ -13,9 +13,10 @@ import { PageModule } from './page/page.module';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    PageModule
-  ],
+    PageComponent
+    ],
   providers: [],
   entryComponents: [AppComponent]
 })
