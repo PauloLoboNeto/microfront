@@ -22,8 +22,8 @@
   <ng-container *ngFor="let mfe of mfesJson">
     <div
       class="grid-item"
-      [style.gridRow]="mfe.position.row + '/' + mfe.size.rowSpan"
-      [style.gridColumn]="mfe.position.column + '/' + mfe.size.colSpan"
+      [style.gridRow]="mfe?.position?.row + '/' + mfe?.size?.rowSpan"
+      [style.gridColumn]="mfe?.position?.column + '/' + mfe?.size?.colSpan"
     >
       <div #mfeContainer></div>
     </div>

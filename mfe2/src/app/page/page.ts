@@ -6,7 +6,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
-  selector: 'mfe2-element',
+  selector: 's-page-mfe',
   templateUrl: './page.html',
   styleUrls: ['./page.component.scss'],
   standalone: true,

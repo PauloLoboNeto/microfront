@@ -1,18 +1,19 @@
+import { endsWith } from '@angular-architects/module-federation-tools';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-import { PageComponent } from './page/page';
-import { APP_BASE_HREF } from '@angular/common';
-
 const routes: Routes = [
-  { path: '**', redirectTo: '' }
+  {
+    path: 'mfe', children: [
+      { matcher: endsWith('about'), loadComponent: () => import('./about/about.component').then(m => m.AboutComponent), outlet: 'mfe2' },
+      { matcher: endsWith('page'), loadComponent: () => import('./page/page').then(m => m.PageComponent), outlet: 'mfe2' },
+      { matcher: endsWith('page'), loadComponent: () => import('./page/page').then(m => m.PageComponent) },
+      { matcher: endsWith('about'), loadComponent: () => import('./about/about.component').then(m => m.AboutComponent) },
+    ]
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload', useHash: true })],
-  exports: [RouterModule],
-  providers: [{
-    provide: APP_BASE_HREF, useValue: '/'
-  }]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

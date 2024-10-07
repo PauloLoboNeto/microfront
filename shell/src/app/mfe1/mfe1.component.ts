@@ -7,7 +7,8 @@ import { AfterViewInit, Component, ElementRef, QueryList, Renderer2, ViewChildre
 })
 export class MFE1Component implements AfterViewInit {
 
-    mfesJson = [{
+    mfesJson = [
+        {
         name: "mfe1",
         element: "mfe1-element",
         type: 'script' as any,
@@ -16,7 +17,7 @@ export class MFE1Component implements AfterViewInit {
         exposedModule: './Module',
         remoteName: 'mfe1',
         position: { "row": 1, "column": 1 },
-        size: { "rowSpan": 2, "colSpan": 2 }
+        size: { "rowSpan": 2, "colSpan": 3 }
     },
     {
         name: "mfe2",
@@ -26,8 +27,8 @@ export class MFE1Component implements AfterViewInit {
         remoteEntry: 'http://localhost:4202/remoteEntry.js',
         exposedModule: './Module',
         remoteName: 'mfe2',
-        position: { "row": 1, "column": 2 },
-        size: { "rowSpan": 1, "colSpan": 3 }
+        position: { "row": 1, "column": 3 },
+        size: { "rowSpan": 2, "colSpan": 3 }
     },
     {
         name: "mfe3",
@@ -38,7 +39,7 @@ export class MFE1Component implements AfterViewInit {
         exposedModule: './Module',
         remoteName: 'mfe3',
         position: { "row": 2, "column": 1 },
-        size: { "rowSpan": 4, "colSpan": 3 }
+        size: { "rowSpan": 3, "colSpan": 2 }
     },
     {
         name: "mfe4",
@@ -48,9 +49,10 @@ export class MFE1Component implements AfterViewInit {
         remoteEntry: 'http://localhost:4204/remoteEntry.js',
         exposedModule: './Module',
         remoteName: 'mfe4',
-        position: { "row": 1, "column": 3 },
-        size: { "rowSpan": 4, "colSpan": 3 }
-    }]
+        position: { "row": 2, "column": 2 },
+        size: { "rowSpan": 3, "colSpan": 4 }
+    }
+]
 
     gridConfig = {
         "rows": 3,
@@ -58,7 +60,7 @@ export class MFE1Component implements AfterViewInit {
     };
 
     @ViewChildren('mfeContainer', { read: ElementRef })
-    mfeContainer!: QueryList<ElementRef>;
+    mfeContainer?: QueryList<ElementRef>;
 
 
     constructor(private renderer: Renderer2) {
@@ -66,12 +68,12 @@ export class MFE1Component implements AfterViewInit {
     }
 
     ngAfterViewInit() {
-        this.mfesJson.forEach((mfeJson, index) => {
-            this.processMFE(mfeJson, this.mfeContainer.toArray()[index]);
+        this.mfesJson?.forEach((mfeJson, index) => {
+            this.processMFE(mfeJson, this.mfeContainer?.toArray()[index]);
         })
     }
 
-    private processMFE(mfeJson: any, container: ElementRef) {
+    private processMFE(mfeJson?: any, container?: ElementRef) {
         loadRemoteModule({
             type: mfeJson.type,
             remoteEntry: mfeJson.remoteEntry,
@@ -80,9 +82,9 @@ export class MFE1Component implements AfterViewInit {
         }).then(res => {
             const element = this.renderer.createElement(mfeJson.element)
             // element['texto'] = mfeJson.positionMFE;
-            container.nativeElement.appendChild(element);
-            console.log(res);
-            console.log(container);
+            container?.nativeElement.appendChild(element);
+            // console.log(res);
+            // console.log(container);
 
         }).catch((res) => console.log(res));
     }

@@ -1,10 +1,12 @@
-import { ApplicationRef, DoBootstrap, Injector, NgModule } from '@angular/core';
+import { DoBootstrap, Injector, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { createCustomElement } from '@angular/elements';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';;
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
 import { PageComponent } from './page/page';
 
 @NgModule({
@@ -15,15 +17,17 @@ import { PageComponent } from './page/page';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    PageComponent
-    ],
+    MatToolbarModule,
+    PageComponent,
+    MatButtonModule
+  ],
   providers: [],
-  entryComponents: [AppComponent]
+  // entryComponents: [AppComponent]
 })
-export class AppModule implements DoBootstrap { 
-  constructor(private injector: Injector){}
+export class AppModule implements DoBootstrap {
+  constructor(private injector: Injector) { }
   ngDoBootstrap(): void {
-      const webC = createCustomElement(PageComponent, {injector: this.injector});
-      customElements.define('mfe1-element', webC)
+    const webC = createCustomElement(AppComponent, { injector: this.injector });
+    customElements.define('mfe1-element', webC)
   }
 }
