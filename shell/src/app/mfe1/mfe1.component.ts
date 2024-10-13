@@ -8,17 +8,17 @@ import { AfterViewInit, Component, ElementRef, QueryList, Renderer2, ViewChildre
 export class MFE1Component implements AfterViewInit {
 
     mfesJson = [
-        {
-        name: "mfe1",
-        element: "mfe1-element",
-        type: 'script' as any,
-        positionMFE: 1,
-        remoteEntry: 'http://localhost:4201/remoteEntry.js',
-        exposedModule: './Module',
-        remoteName: 'mfe1',
-        position: { "row": 1, "column": 1 },
-        size: { "rowSpan": 2, "colSpan": 3 }
-    },
+    //     {
+    //     name: "mfe1",
+    //     element: "mfe1-element",
+    //     type: 'script' as any,
+    //     positionMFE: 1,
+    //     remoteEntry: 'http://localhost:4201/remoteEntry.js',
+    //     exposedModule: './Module',
+    //     remoteName: 'mfe1',
+    //     position: { "row": 1, "column": 1 },
+    //     size: { "rowSpan": 2, "colSpan": 3 }
+    // },
     {
         name: "mfe2",
         element: "mfe2-element",

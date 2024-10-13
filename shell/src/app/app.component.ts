@@ -13,9 +13,10 @@ export class AppComponent {
   constructor(private router: Router){ }
 
   ngOnInit(){
+
     this.router.events.pipe(filter(event => event instanceof NavigationEnd))
-    .subscribe((res: any) => {
-      console.log(res);
+    .subscribe((_res: any) => {
+      // console.log(res);
     })
     this.router.navigate(['mfe'])
   }

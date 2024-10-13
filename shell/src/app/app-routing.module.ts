@@ -18,7 +18,7 @@ export function startsWith(prefix: string): UrlMatcher {
 const APP_ROUTES: Routes = [
   {
     matcher: startsWith('mfe'),
-    component: MFE1Component,
+    component: MFE1Component
   },
   {
     path: '',

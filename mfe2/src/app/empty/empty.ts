@@ -1,26 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
-  selector: 's-page',
-  templateUrl: './page.html',
-  styleUrls: ['./page.component.scss'],
+  selector: 's-empty-mfe',
+  templateUrl: './empty.html',
   standalone: true,
   imports: [
-    CommonModule,
-    MatToolbarModule,
-    MatCardModule,
-    MatGridListModule
+    CommonModule
   ]
 })
-export class PageComponent {
-  title = 'mfe1';
-  @Input() texto: string = 'mfe1';
+export class EmptyComponent {
 
-  constructor(){
-    // console.log('aqui')
-  }
 }
